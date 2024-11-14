@@ -1,49 +1,32 @@
 import React from "react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { Head } from "@inertiajs/react";
+import Table from "@/Components/Table";
 
-const StudentsIndex = ({ students }) => {
+export default function Classes({ classes }) {
+    const columns = [
+        { header: "No", key: "id" },
+        { header: "Grade Level", key: "class_level" },
+        {
+            header: "Class Teacher",
+            render: (item) => (item.teacher ? item.teacher.name : "No Teacher"),
+        },
+        {
+            header: "Action",
+            render: () => (
+                <button className="text-blue-500 hover:underline">Edit</button>
+            ),
+        },
+    ];
+
     return (
-        <div>
-            <h1>Students List</h1>
-            <table className="table-auto w-full border-collapse border border-gray-300">
-                <thead>
-                    <tr>
-                        <th className="border p-2">AdmNo</th>
-                        <th className="border p-2">First Name</th>
-                        <th className="border p-2">Middle Name</th>
-                        <th className="border p-2">Last Name</th>
-                        <th className="border p-2">Date of Birth</th>
-                        <th className="border p-2">Guardian Name</th>
-                        <th className="border p-2">Guardian Contact</th>
-                        <th className="border p-2">Enrollment Year</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {students.map((student) => (
-                        <tr key={student.admno}>
-                            <td className="border p-2">{student.admno}</td>
-                            <td className="border p-2">{student.first_name}</td>
-                            <td className="border p-2">
-                                {student.middle_name}
-                            </td>
-                            <td className="border p-2">{student.last_name}</td>
-                            <td className="border p-2">
-                                {student.date_of_birth}
-                            </td>
-                            <td className="border p-2">
-                                {student.guardian_name}
-                            </td>
-                            <td className="border p-2">
-                                {student.guardian_contact}
-                            </td>
-                            <td className="border p-2">
-                                {student.enrollment_year}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
+        <AuthenticatedLayout>
+            <Head title="Dashboard" />
+            <div className="py-4">
+                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                    <Table columns={columns} data={classes} />
+                </div>
+            </div>
+        </AuthenticatedLayout>
     );
-};
-
-export default StudentsIndex;
+}

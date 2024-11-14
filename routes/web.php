@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ClassController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,7 +29,9 @@ Route::middleware('auth')->group(function () {
 
 // Dashboard routes
 Route::get('/students', [StudentController::class, 'index']);
-Route::get('/classes', [StudentController::class, 'index']);
+Route::get('/classes', [ClassController::class, 'index']);
+Route::get('/teachers', [TeacherController::class, 'index']);
+
 
 
 require __DIR__.'/auth.php';
