@@ -28,7 +28,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Students/Create');
+
     }
 
     /**
@@ -36,8 +37,14 @@ class StudentController extends Controller
      */
     public function store(StoreStudentsRequest $request)
     {
-        //
+        // Save student data to the database
+        Students::create($request->validated());
+
+         // Redirect to the student index page with a success message
+        return redirect()->route('students.index')->with('success', 'Student added successfully!');
     }
+
+
 
     /**
      * Display the specified resource.
@@ -52,7 +59,10 @@ class StudentController extends Controller
      */
     public function edit(Students $students)
     {
-        //
+          // Return the student data to the Inertia edit page
+          return Inertia::render('Students/Edit', [
+            'student' => $students,
+        ]);
     }
 
     /**

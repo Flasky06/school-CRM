@@ -4,6 +4,8 @@ import { Head } from "@inertiajs/react";
 import Table from "@/Components/Table";
 
 export default function Classes({ classes }) {
+    console.log("classes", classes);
+
     const columns = [
         { header: "No", key: "id" },
         { header: "Grade Level", key: "class_level" },

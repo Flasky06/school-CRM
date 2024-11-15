@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('admno');
             $table->string('first_name');
-            $table->string('middle_name');
+            $table->string('middle_name')->nullable();
             $table->string('last_name');
             $table->date('date_of_birth');
             $table->enum('gender', allowed: ['male', 'female']);
-            $table->string('guardian_name');
-            $table->string('guardian_contact');
+            $table->string('guardian_name')->nullable();
+            $table->string('guardian_contact')->nullable();
             $table->year('enrollment_year');
             $table->timestamps();
         });

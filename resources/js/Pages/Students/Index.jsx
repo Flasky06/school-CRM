@@ -17,7 +17,12 @@ export default function Students({ students }) {
         {
             header: "Action",
             render: (item) => (
-                <button className="text-blue-500 hover:underline">Edit</button>
+                <Link
+                    href={route("students.edit", item.id)}
+                    className="text-blue-500 hover:underline"
+                >
+                    Edit
+                </Link>
             ),
         },
     ];
@@ -25,12 +30,12 @@ export default function Students({ students }) {
     return (
         <AuthenticatedLayout>
             <Head title="Dashboard" />
-            <div className="flex justify-end mt-10 max-w-5xl mx-auto bg-red-700 py-2">
+            <div className="flex justify-end mt-10 max-w-5xl mx-auto py-2">
                 <Link
-                    href="/students/add-new"
-                    className="text-white bg-green-800 py-1 px-2 rounded cursor-pointer"
+                    href={route("students.create")}
+                    className="bg-emerald-500 py-1 px-3 text-white rounded shadow transition-all hover:bg-emerald-600"
                 >
-                    + Add new Student
+                    Add New
                 </Link>
             </div>
             <div className="py-4">

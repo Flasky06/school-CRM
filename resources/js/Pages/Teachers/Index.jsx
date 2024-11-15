@@ -4,8 +4,9 @@ import { Head } from "@inertiajs/react";
 import Table from "@/Components/Table"; // Adjust the path to the Table component
 
 export default function Index({ teachers }) {
+    console.log("teachers", teachers);
     const columns = [
-        { header: "No", render: (teacher, index) => index + 1 },
+        { header: "No", key: "id" },
         { header: "First Name", key: "first_name" },
         { header: "Last Name", key: "last_name" },
         { header: "Gender", key: "gender" },
